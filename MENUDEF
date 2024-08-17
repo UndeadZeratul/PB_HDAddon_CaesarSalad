@@ -13,6 +13,8 @@ OptionMenu CaesarSaladZombies {
     StaticText ""
     Submenu "\"Janitors\"", "specOpsZombiemanSpawns", 0, 1
     StaticText ""
+    Submenu "Liberator Zombies", "liberatorZombiemanSpawns", 0, 1
+    StaticText ""
 
     StaticText "$MENU_RESETOPTIONS", "Red"
     StaticText ""
@@ -152,4 +154,31 @@ OptionMenu specOpsZombiemanSpawns
 
     StaticText "$MENU_RESETOPTIONS", "Cream"
     SafeCommand "$MENU_RESETALLOPTIONS", "specopszombieman_reset_cvars"
+}
+
+OptionMenu liberatorZombiemanSpawns
+{
+    Title "------ Liberator Zombies Options ------"
+    StaticText "$MENU_NOTICE", "Cream"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "white"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "white"
+    StaticText ""
+
+    StaticText "$MENU_SPAWNOPTIONS", "Cream"
+    StaticText "$MENU_LIBERATORZOMBIEMAN_SHOTGUNGUY_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "liberatorzombieman_shotgunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar liberatorzombieman_shotgunguy_spawn_bias"
+    StaticText "$MENU_LIBERATORZOMBIEMAN_CHAINGUNGUY_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "liberatorzombieman_chaingunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar liberatorzombieman_chaingunguy_spawn_bias"
+    StaticText ""
+
+    StaticText  "Control whether replacements happen after a mapload.", "white"
+    Option "$MENU_PERSISTENCY", "liberatorzombieman_persistent_spawning", "OnOff"
+    SafeCommand "Reset persistence options", "resetcvar liberatorzombieman_persistent_spawning"
+    StaticText ""
+    StaticText ""
+
+    StaticText "$MENU_RESETOPTIONS", "Cream"
+    SafeCommand "$MENU_RESETALLOPTIONS", "liberatorzombieman_reset_cvars"
 }
