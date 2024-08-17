@@ -1,0 +1,4 @@
+$alias libguy/sight		chainguy/sight
+$alias libguy/death		chainguy/death
+$alias libguy/active	chainguy/active
+$alias libguy/pain		chainguy/pain
