@@ -1,0 +1,340 @@
+// Struct for Enemyspawn information.
+class CaesarSaladSpawnEnemy play {
+
+    // ID by string for spawner
+    string spawnName;
+
+    // ID by string for spawnees
+    Array<CaesarSaladSpawnEnemyEntry> spawnReplaces;
+
+    // Whether or not to persistently spawn.
+    bool isPersistent;
+
+    // Whether or not to replace the original enemy
+    bool replaceEnemy;
+
+    string toString() {
+
+        let replacements = "[";
+
+        foreach (spawnReplace : spawnReplaces) replacements = replacements..", "..spawnReplace.toString();
+
+        replacements = replacements.."]";
+
+        return String.format("{ spawnName=%s, spawnReplaces=%s, isPersistent=%b, replaceEnemy=%b }", spawnName, replacements, isPersistent, replaceEnemy);
+    }
+}
+
+class CaesarSaladSpawnEnemyEntry play {
+
+    string name;
+    int    chance;
+
+    string toString() {
+        return String.format("{ name=%s, chance=%s }", name, chance >= 0 ? "1/"..(chance + 1) : "never");
+    }
+}
+
+// Struct for passing useinformation to ammunition.
+class CaesarSaladSpawnAmmo play {
+    // ID by string for the header ammo.
+    string ammoName;
+
+    // ID by string for weapons using that ammo.
+    Array<string> weaponNames;
+
+    string toString() {
+
+        let weapons = "[";
+
+        foreach (weaponName : weaponNames) weapons = weapons..", "..weaponName;
+
+        weapons = weapons.."]";
+
+        return String.format("{ ammoName=%s, weaponNames=%s }", ammoName, weapons);
+    }
+}
+
+// One handler to rule them all.
+class CaesarSaladHandler : EventHandler {
+    // List of persistent classes to completely ignore.
+    // This -should- mean this mod has no performance impact.
+    static const string blacklist[] = {
+        'HDSmoke',
+        'BloodTrail',
+        'CheckPuff',
+        'WallChunk',
+        'HDBulletPuff',
+        'HDFireballTail',
+        'ReverseImpBallTail',
+        'HDSmokeChunk',
+        'ShieldSpark',
+        'HDFlameRed',
+        'HDMasterBlood',
+        'PlantBit',
+        'HDBulletActor',
+        'HDLadderSection'
+    };
+
+    // List of Enemy-spawn associations.
+    // used for Enemy-replacement on mapload.
+    array<CaesarSaladSpawnEnemy> enemySpawnList;
+
+    // List of weapon-ammo associations.
+    // Used for ammo-use association on ammo spawn (happens very often).
+    array<CaesarSaladSpawnAmmo> ammoSpawnList;
+
+    bool cvarsAvailable;
+
+    // appends an entry to Enemyspawnlist;
+    void addEnemy(string name, Array<CaesarSaladSpawnEnemyEntry> replacees, bool persists, bool rep=true) {
+
+        if (hd_debug) {
+
+            let msg = "Adding "..(persists ? "Persistent" : "Non-Persistent").." Replacement Entry for "..name..": [";
+
+            foreach (replacee : replacees) msg = msg..", "..replacee.toString();
+
+            console.printf(msg.."]");
+        }
+
+        // Creates a new struct;
+        CaesarSaladSpawnEnemy spawnee = CaesarSaladSpawnEnemy(new('CaesarSaladSpawnEnemy'));
+
+        // Populates the struct with relevant information,
+        spawnee.spawnName = name;
+        spawnee.isPersistent = persists;
+        spawnee.replaceEnemy = rep;
+        spawnee.spawnReplaces.copy(replacees);
+
+        // Pushes the finished struct to the array.
+        enemySpawnList.push(spawnee);
+    }
+
+    CaesarSaladSpawnEnemyEntry addEnemyEntry(string name, int chance) {
+
+        // Creates a new struct;
+        CaesarSaladSpawnEnemyEntry spawnee = CaesarSaladSpawnEnemyEntry(new('CaesarSaladSpawnEnemyEntry'));
+        spawnee.name = name;
+        spawnee.chance = chance;
+        return spawnee;
+    }
+
+    // appends an entry to ammoSpawnList;
+    void addAmmo(string name, Array<string> weapons) {
+
+        if (hd_debug) {
+            let msg = "Adding Ammo Association Entry for "..name..": [";
+
+            foreach (weapon : weapons) msg = msg..", "..weapon;
+
+            console.printf(msg.."]");
+        }
+
+        // Creates a new struct;
+        CaesarSaladSpawnAmmo spawnee = CaesarSaladSpawnAmmo(new('CaesarSaladSpawnAmmo'));
+        spawnee.ammoName = name;
+        spawnee.weaponNames.copy(weapons);
+
+        // Pushes the finished struct to the array.
+        ammoSpawnList.push(spawnee);
+    }
+
+    // Populates the replacement and association arrays.
+    void init() {
+
+        cvarsAvailable = true;
+
+        // --------------------
+        // Ammunition
+        // --------------------
+
+        // 6mm Flechettes
+        Array<string> wep_6mm;
+        wep_6mm.push('HDColtCommando_CS');
+        addAmmo('HD6mmFlechetteAmmo', wep_6mm);
+        addAmmo('PB_HDSteyrACRMag', wep_6mm);
+
+
+        // --------------------
+        // Enemy spawn lists.
+        // --------------------
+
+        // .355 SMG Zombieman
+        Array<CaesarSaladSpawnEnemyEntry> spawns_355smgZombie;
+        spawns_355smgZombie.push(addEnemyEntry('Zombieman', colt355smgzombieman_zombieman_spawn_bias));
+        spawns_355smgZombie.push(addEnemyEntry('ShotgunGuy', colt355smgzombieman_shotgunguy_spawn_bias));
+        addEnemy('PB_ColtSMGZombie', spawns_355smgZombie, colt355smgzombieman_persistent_spawning);
+
+        // .45 ACP MAC 10 Zombieman
+        Array<CaesarSaladSpawnEnemyEntry> spawns_mac10Zombieman;
+        spawns_mac10Zombieman.push(addEnemyEntry('Zombieman', mac10zombieman_zombieman_spawn_bias));
+        spawns_mac10Zombieman.push(addEnemyEntry('ShotgunGuy', mac10zombieman_shotgunguy_spawn_bias));
+        addEnemy('PB_UndeadHomeslice', spawns_mac10Zombieman, mac10zombieman_persistent_spawning);
+
+        // 6mm Flechette ACR Zombieman
+        Array<CaesarSaladSpawnEnemyEntry> spawns_acrZombieman;
+        spawns_acrZombieman.push(addEnemyEntry('ChaingunGuy', acrzombieman_chaingunguy_spawn_bias));
+        addEnemy('PB_ACRZombie', spawns_acrZombieman, acrzombieman_persistent_spawning);
+
+        // CAWS Shotgun Zombieman
+        Array<CaesarSaladSpawnEnemyEntry> spawns_cawsZombieman;
+        spawns_cawsZombieman.push(addEnemyEntry('HellKnight', cawszombieman_hellknight_spawn_bias));
+        addEnemy('PB_DozerZombie', spawns_cawsZombieman, cawszombieman_persistent_spawning);
+
+        // Spec Ops Zombieman
+        Array<CaesarSaladSpawnEnemyEntry> spawns_specOpsZombieman;
+        spawns_specOpsZombieman.push(addEnemyEntry('Spectre', specopszombieman_spectre_spawn_bias));
+        addEnemy('PB_SpecOpsZombie', spawns_specOpsZombieman, specopszombieman_persistent_spawning);
+
+    }
+
+    // Random stuff, stores it and forces negative values just to be 0.
+    bool giveRandom(int chance) {
+        if (chance > -1) {
+            let result = random(0, chance);
+
+            if (hd_debug) console.printf("Rolled a "..(result + 1).." out of "..(chance + 1));
+
+            return result == 0;
+        }
+
+        return false;
+    }
+
+    // Tries to replace the item during spawning.
+    bool tryReplaceEnemy(ReplaceEvent e, string spawnName, int chance) {
+        if (giveRandom(chance)) {
+            if (hd_debug) console.printf(e.replacee.getClassName().." -> "..spawnName);
+
+            e.replacement = spawnName;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    // Tries to create the Enemy via random spawning.
+    bool tryCreateEnemy(Actor thing, string spawnName, int chance) {
+        if (giveRandom(chance)) {
+            if (hd_debug) console.printf(thing.getClassName().." + "..spawnName);
+
+            Actor.Spawn(spawnName, thing.pos);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    override void worldLoaded(WorldEvent e) {
+
+        // Populates the main arrays if they haven't been already.
+        if (!cvarsAvailable) init();
+    }
+
+    override void checkReplacement(ReplaceEvent e) {
+
+        // Populates the main arrays if they haven't been already.
+        if (!cvarsAvailable) init();
+
+        // If there's nothing to replace or if the replacement is final, quit.
+        if (!e.replacee || e.isFinal) return;
+
+        // If thing being replaced is blacklisted, quit.
+        foreach (bl : blacklist) if (e.replacee is bl) return;
+
+        string candidateName = e.replacee.getClassName();
+
+        // If current map is Range, quit.
+        if (level.MapName == 'RANGE') return;
+
+        handleEnemyReplacements(e, candidateName);
+    }
+
+    override void worldThingSpawned(WorldEvent e) {
+
+        // Populates the main arrays if they haven't been already.
+        if (!cvarsAvailable) init();
+
+        // If thing spawned doesn't exist, quit.
+        if (!e.thing) return;
+
+        // If thing spawned is blacklisted, quit.
+        foreach (bl : blacklist) if (e.thing is bl) return;
+
+        string candidateName = e.thing.getClassName();
+
+        // Pointers for specific classes.
+        let ammo = HDAmmo(e.thing);
+
+        // If the thing spawned is an ammunition, add any and all items that can use this.
+        if (ammo) handleAmmoUses(ammo, candidateName);
+
+        // If current map is Range, quit.
+        if (level.MapName == 'RANGE') return;
+
+        handleEnemySpawns(e.thing, candidateName);
+    }
+
+    private void handleAmmoUses(HDAmmo ammo, string candidateName) {
+        foreach (ammoSpawn : ammoSpawnList) if (candidateName ~== ammoSpawn.ammoName) {
+            if (hd_debug) {
+                console.printf("Adding the following to the list of items that use "..ammo.getClassName().."");
+                foreach (weapon : ammoSpawn.weaponNames) console.printf("* "..weapon);
+            }
+
+            ammo.itemsThatUseThis.append(ammoSpawn.weaponNames);
+        }
+    }
+
+    private void handleEnemyReplacements(ReplaceEvent e, string candidateName) {
+
+        // Checks if the level has been loaded more than 1 tic.
+        bool prespawn = !(level.maptime > 1);
+
+        // Iterates through the list of Enemy candidates for e.thing.
+        foreach (enemySpawn : enemySpawnList) {
+
+            if ((prespawn || enemySpawn.isPersistent) && enemySpawn.replaceEnemy) {
+                foreach (spawnReplace : enemySpawn.spawnReplaces) {
+                    if (spawnReplace.name ~== candidateName) {
+                        if (hd_debug) console.printf("Attempting to replace "..candidateName.." with "..enemySpawn.spawnName.."...");
+
+                        if (tryReplaceEnemy(e, enemySpawn.spawnName, spawnReplace.chance)) return;
+                    }
+                }
+            }
+        }
+    }
+
+    private void handleEnemySpawns(Actor thing, string candidateName) {
+
+        // Checks if the level has been loaded more than 1 tic.
+        bool prespawn = !(level.maptime > 1);
+
+        // Iterates through the list of Enemy candidates for e.thing.
+        foreach (enemySpawn : enemySpawnList) {
+
+            // if currently in pre-spawn or configured to be persistent,
+            // and original thing being spawned is not an owned item,
+            // and not configured to replace original spawn,
+            // attempt to spawn new thing.
+            let item = Inventory(thing);
+            if (
+                (prespawn || enemySpawn.isPersistent)
+             && !(item && item.owner)
+             && !enemySpawn.replaceEnemy
+            ) {
+                foreach (spawnReplace : enemySpawn.spawnReplaces) {
+                    if (spawnReplace.name ~== candidateName) {
+                        if (hd_debug) console.printf("Attempting to spawn "..enemySpawn.spawnName.." with "..candidateName.."...");
+
+                        if (tryCreateEnemy(thing, enemySpawn.spawnName, spawnReplace.chance)) return;
+                    }
+                }
+            }
+        }
+    }
+}
