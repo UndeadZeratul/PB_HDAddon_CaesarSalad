@@ -6,6 +6,7 @@ version "4.11"
 #include "ZScript/ColtZombie.zsc"
 #include "ZScript/ACRZombie.zsc"
 #include "ZScript/Bulldozer.zsc"
+#include "Zscript/LibZombie.zsc"
 
 // #include "ZScript/Weapons/M4Flechette.zsc"
 #include "ZScript/Weapons/SpecGasGrenade.zsc"
