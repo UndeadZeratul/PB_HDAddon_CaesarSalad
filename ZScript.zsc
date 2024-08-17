@@ -6,50 +6,52 @@ version "4.11"
 #include "ZScript/ACRZombie_Old.zsc"
 #include "ZScript/Bulldozer.zsc"
 
-//#include "ZScript/Weapons/M4Flechette.zsc"
+#include "ZScript/CaesarSaladSpawnHandler.zsc"
 
-class PB_HDCaesarSaladSpawner : EventHandler
-{
-override void CheckReplacement(ReplaceEvent e) {
-	if (!PB_CaesarSalad_AllowReplacement)
-		return;
-	switch (e.Replacee.GetClassName()) {
-	
-	//Andy McNab look-a-like
-		case 'ZombieMan' 	: if (!random(0, 3)) 
-		{
-			if(random(0,1)){e.Replacement = "PB_UndeadHomeslice";}
-			else{e.Replacement = "PB_ColtSMGZombie";}
-		}	
-		break;
+// #include "ZScript/Weapons/M4Flechette.zsc"
+
+// class PB_HDCaesarSaladSpawner : EventHandler
+// {
+// 	override void CheckReplacement(ReplaceEvent e) {
+// 		if (!PB_CaesarSalad_AllowReplacement)
+// 			return;
+// 		switch (e.Replacee.GetClassName()) {
 		
-		case 'ShotgunGuy' 	: if (!random(0, 3)) 
-		{
-			if(random(0,1)){e.Replacement = "PB_UndeadHomeslice";}
-			else{e.Replacement = "PB_ColtSMGZombie";}
-		}	
-		break;
-		
-		case 'ChaingunGuy' 	: if (!random(0, 2))		
-		{
-			if(random(0,1)){e.Replacement = "PB_ACRZombie";}
-			else{e.Replacement = "PB_ACRZombie";} 
+// 			//Andy McNab look-a-like
+// 			case 'ZombieMan' 	: if (!random(0, 3)) 
+// 			{
+// 				if(random(0,1)){e.Replacement = "PB_UndeadHomeslice";}
+// 				else{e.Replacement = "PB_ColtSMGZombie";}
+// 			}	
+// 			break;
 			
-			//placeholder since I'm planning to have a different enemy also spawn on the chaingunner
-		}
-		break;
-		
-		case 'HellKnight' 	: if (!random(0, 2))		
-		{
-			if(random(0,1)){e.Replacement = "PB_DozerZombie";}
-			else{e.Replacement = "PB_DozerZombie";} 
-		}	
-		
-		break;
-		
-		}
-	e.IsFinal = false;
-	}
+// 			case 'ShotgunGuy' 	: if (!random(0, 3)) 
+// 			{
+// 				if(random(0,1)){e.Replacement = "PB_UndeadHomeslice";}
+// 				else{e.Replacement = "PB_ColtSMGZombie";}
+// 			}	
+// 			break;
+			
+// 			case 'ChaingunGuy' 	: if (!random(0, 2))		
+// 			{
+// 				if(random(0,1)){e.Replacement = "PB_ACRZombie";}
+// 				else{e.Replacement = "PB_ACRZombie";} 
+				
+// 				//placeholder since I'm planning to have a different enemy also spawn on the chaingunner
+// 			}
+// 			break;
+			
+// 			case 'HellKnight' 	: if (!random(0, 2))		
+// 			{
+// 				if(random(0,1)){e.Replacement = "PB_DozerZombie";}
+// 				else{e.Replacement = "PB_DozerZombie";} 
+// 			}	
+			
+// 			break;
+			
+// 		}
+// 		e.IsFinal = false;
+// 	}
 		
 		
 	//honestly considering whether i should really keep the AR-15 or not
@@ -78,4 +80,4 @@ override void CheckReplacement(ReplaceEvent e) {
 		}
 	}
 	*/
-}
+// }
