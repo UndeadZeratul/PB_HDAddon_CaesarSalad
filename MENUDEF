@@ -1,0 +1,155 @@
+OptionMenu CaesarSaladZombies {
+    Title "$CAESAR_MENU"
+    StaticText ""
+    StaticText "$MENU_MONSTERS_TITLE", "Cream"
+    StaticText ""
+    Submenu "Colt Commando Zombies", "355smgZombiemanSpawns", 0, 1
+    StaticText ""
+    Submenu "MAC-10 Zombies", "mac10ZombiemanSpawns", 0, 1
+    StaticText ""
+    Submenu "Steyr ACR Zombies", "acrZombiemanSpawns", 0, 1
+    StaticText ""
+    Submenu "CAWS Zombies", "cawsZombiemanSpawns", 0, 1
+    StaticText ""
+    Submenu "\"Janitors\"", "specOpsZombiemanSpawns", 0, 1
+    StaticText ""
+
+    StaticText "$MENU_RESETOPTIONS", "Red"
+    StaticText ""
+    SafeCommand "$CAESAR_RESETALLOPTIONS", "Caesar_Reset_Cvars"
+}
+
+AddOptionMenu "OptionsMenu" {
+    Submenu "$CAESAR_MENU", "CaesarSaladZombies"
+}
+
+AddOptionMenu "HDAddonMenu" {
+    Submenu "$CAESAR_MENU", "CaesarSaladZombies"
+}
+
+
+OptionMenu 355smgZombiemanSpawns
+{
+    Title "------ Colt Commando Zombies Options ------"
+    StaticText "$MENU_NOTICE", "Cream"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "white"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "white"
+    StaticText ""
+
+    StaticText "$MENU_SPAWNOPTIONS", "Cream"
+    StaticText "$MENU_355SMGZOMBIEMAN_ZOMBIEMAN_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "colt355smgzombieman_zombieman_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar colt355smgzombieman_zombieman_spawn_bias"
+    StaticText "$MENU_355SMGZOMBIEMAN_SHOTGUNGUY_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "colt355smgzombieman_shotgunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar colt355smgzombieman_shotgunguy_spawn_bias"
+    StaticText ""
+
+    StaticText  "$MENU_PERSISTENCY_TEXT.", "white"
+    Option "$MENU_PERSISTENCY", "colt355smgzombieman_persistent_spawning", "OnOff"
+    SafeCommand "Reset persistence options", "resetcvar colt355smgzombieman_persistent_spawning"
+    StaticText ""
+    StaticText ""
+
+    StaticText "$MENU_RESETOPTIONS", "Cream"
+    SafeCommand "$MENU_RESETALLOPTIONS", "355smgzombieman_reset_cvars"
+}
+
+OptionMenu mac10ZombiemanSpawns
+{
+    Title "------ MAC-10 Zombies Options ------"
+    StaticText "$MENU_NOTICE", "Cream"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "white"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "white"
+    StaticText ""
+
+    StaticText "$MENU_SPAWNOPTIONS", "Cream"
+    StaticText "$MENU_MAC10ZOMBIEMAN_ZOMBIEMAN_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "mac10zombieman_zombieman_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar mac10zombieman_zombieman_spawn_bias"
+    StaticText "$MENU_MAC10ZOMBIEMAN_SHOTGUNGUY_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "mac10zombieman_shotgunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar mac10zombieman_shotgunguy_spawn_bias"
+    StaticText ""
+
+    StaticText  "$MENU_PERSISTENCY_TEXT.", "white"
+    Option "$MENU_PERSISTENCY", "mac10zombieman_persistent_spawning", "OnOff"
+    SafeCommand "Reset persistence options", "resetcvar mac10zombieman_persistent_spawning"
+    StaticText ""
+    StaticText ""
+
+    StaticText "$MENU_RESETOPTIONS", "Cream"
+    SafeCommand "$MENU_RESETALLOPTIONS", "mac10zombieman_reset_cvars"
+}
+
+OptionMenu acrZombiemanSpawns
+{
+    Title "------ Steyr ACR Zombies Options ------"
+    StaticText "$MENU_NOTICE", "Cream"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "white"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "white"
+    StaticText ""
+
+    StaticText "$MENU_SPAWNOPTIONS", "Cream"
+    StaticText "$MENU_ACRZOMBIEMAN_CHAINGUNGUY_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "acrzombieman_chaingunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar acrzombieman_chaingunguy_spawn_bias"
+    StaticText ""
+
+    StaticText  "$MENU_PERSISTENCY_TEXT.", "white"
+    Option "$MENU_PERSISTENCY", "acrzombieman_persistent_spawning", "OnOff"
+    SafeCommand "Reset persistence options", "resetcvar acrzombieman_persistent_spawning"
+    StaticText ""
+    StaticText ""
+
+    StaticText "$MENU_RESETOPTIONS", "Cream"
+    SafeCommand "$MENU_RESETALLOPTIONS", "acrzombieman_reset_cvars"
+}
+
+OptionMenu cawsZombiemanSpawns
+{
+    Title "------ CAWS Zombies Options ------"
+    StaticText "$MENU_NOTICE", "Cream"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "white"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "white"
+    StaticText ""
+
+    StaticText "$MENU_SPAWNOPTIONS", "Cream"
+    StaticText "$MENU_CAWSZOMBIEMAN_HELLKNIGHT_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "cawszombieman_hellknight_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar cawszombieman_hellknight_spawn_bias"
+    StaticText ""
+
+    StaticText  "$MENU_PERSISTENCY_TEXT.", "white"
+    Option "$MENU_PERSISTENCY", "cawszombieman_persistent_spawning", "OnOff"
+    SafeCommand "Reset persistence options", "resetcvar cawszombieman_persistent_spawning"
+    StaticText ""
+    StaticText ""
+
+    StaticText "$MENU_RESETOPTIONS", "Cream"
+    SafeCommand "$MENU_RESETALLOPTIONS", "cawszombieman_reset_cvars"
+}
+
+OptionMenu specOpsZombiemanSpawns
+{
+    Title "------ \"Janitors\" Options ------"
+    StaticText "$MENU_NOTICE", "Cream"
+    StaticText "$MENU_SPAWNRATE_TEXT1", "white"
+    StaticText "$MENU_SPAWNRATE_TEXT2", "white"
+    StaticText ""
+
+    StaticText "$MENU_SPAWNOPTIONS", "Cream"
+    StaticText "$MENU_SPECOPSZOMBIEMAN_SPECTRE_SPAWNTEXT", "white"
+    ScaleSlider "$MENU_SPAWNRATE", "specopszombieman_spectre_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    SafeCommand "$MENU_RESETOPTIONS", "resetcvar specopszombieman_spectre_spawn_bias"
+    StaticText ""
+
+    StaticText  "$MENU_PERSISTENCY_TEXT.", "white"
+    Option "$MENU_PERSISTENCY", "specopszombieman_persistent_spawning", "OnOff"
+    SafeCommand "Reset persistence options", "resetcvar specopszombieman_persistent_spawning"
+    StaticText ""
+    StaticText ""
+
+    StaticText "$MENU_RESETOPTIONS", "Cream"
+    SafeCommand "$MENU_RESETALLOPTIONS", "specopszombieman_reset_cvars"
+}

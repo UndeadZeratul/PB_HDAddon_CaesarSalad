@@ -1,0 +1,47 @@
+[en default]
+
+
+// Options Menu Titles
+CAESAR_MENU                               = "\c[Cream]ⓒ\c- CaesarSalad";
+MENU_MONSTERS_TITLE                       = "--- Monsters ---";
+MENU_RESETOPTIONS_TITLE                   = "--- Reset Options ---";
+
+// Menu Section Headers
+MENU_SPAWNOPTIONS                         = "Spawn Options";
+MENU_MONSPAWNOPTIONS                      = "Monster Spawn Options";
+MENU_PERSISTENCYOPTIONS                   = "Spawn Persistence Options";
+MENU_RESETOPTIONS                         = "Reset Options";
+MENU_RESETALLOPTIONS                      = "Reset all Options";
+
+// Menu Static Text
+MENU_SPAWNRATE_TEXT1                      = "Setting 'spawn rate' to Replace All will suppress";
+MENU_SPAWNRATE_TEXT2                      = "spawns of that given type.";
+MENU_PERSISTENCY_TEXT                     = "Control whether replacements happen after a mapload:";
+
+// Menu Option Labels
+MENU_NOTICE                               = "Notice:";
+MENU_SPAWNRATE                            = "Spawn Rate: ";
+MENU_PERSISTENCY                          = "Persistent Spawns: ";
+
+// Menu Option Values
+MENU_ENABLED                              = "Enabled";
+MENU_DISABLED                             = "Disabled";
+MENU_REPLACEALL                           = "Replace All";
+MENU_WITHALL                              = "With All";
+
+// Menu Command Text
+MENU_RESETMONSTER                         = "Reset Monster Options";
+MENU_RESETPERSISTENCY                     = "Reset Persistence Options";
+CAESAR_RESETALLOPTIONS                    = "Reset all options for Caesar Salad";
+
+MENU_355SMGZOMBIEMAN_ZOMBIEMAN_SPAWNTEXT  = "Control the rate that Colt Commando Zombiemen spawn on Zombiemen:";
+MENU_355SMGZOMBIEMAN_SHOTGUNGUY_SPAWNTEXT = "Control the rate that Colt Commando Zombiemen spawn on Shotgun Guys:";
+
+MENU_MAC10ZOMBIEMAN_ZOMBIEMAN_SPAWNTEXT   = "Control the rate that MAC-10 Zombiemen spawn on Zombiemen:";
+MENU_MAC10ZOMBIEMAN_SHOTGUNGUY_SPAWNTEXT  = "Control the rate that MAC-10 Zombiemen spawn on Shotgun Guys:";
+
+MENU_ACRZOMBIEMAN_CHAINGUNGUY_SPAWNTEXT   = "Control the rate that ACR Zombiemen spawn on Chaingun Guys:";
+
+MENU_CAWSZOMBIEMAN_HELLKNIGHT_SPAWNTEXT   = "Control the rate that CAWS Zombiemen spawn on Hell Knights:";
+
+MENU_SPECOPSZOMBIEMAN_SPECTRE_SPAWNTEXT   = "Control the rate that \"Janitors\" spawn on Spectres:";

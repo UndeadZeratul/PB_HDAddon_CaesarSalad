@@ -1,1 +1,18 @@
 server bool PB_CaesarSalad_AllowReplacement = true;
+
+server int colt355smgzombieman_zombieman_spawn_bias = 19;
+server int colt355smgzombieman_shotgunguy_spawn_bias = 19;
+server bool colt355smgzombieman_persistent_spawning = false;
+
+server int mac10zombieman_zombieman_spawn_bias = 19;
+server int mac10zombieman_shotgunguy_spawn_bias = 19;
+server bool mac10zombieman_persistent_spawning = false;
+
+server int acrzombieman_chaingunguy_spawn_bias = 3;
+server bool acrzombieman_persistent_spawning = false;
+
+server int cawszombieman_hellknight_spawn_bias = 2;
+server bool cawszombieman_persistent_spawning = false;
+
+server int specopszombieman_spectre_spawn_bias = 3;
+server bool specopszombieman_persistent_spawning = false;
