@@ -122,6 +122,15 @@ class CaesarSaladHandler : EventHandler {
         spawns_acrZombieman.push(addEnemyEntry('ChaingunGuy', acrzombieman_chaingunguy_spawn_bias));
         addEnemy('PB_ACRZombie', spawns_acrZombieman, acrzombieman_persistent_spawning);
 
+        // Semi-Auto Liberator Zombieman
+        Array<CaesarSaladSpawnEnemyEntry> spawns_semiLibLad;
+        spawns_semiLibLad.push(addEnemyEntry('ShotgunGuy', liberatorzombieman_shotgunguy_spawn_bias));
+        addEnemy('HDSemiLibShockTrooper', spawns_semiLibLad, liberatorzombieman_persistent_spawning);
+
+        // Liberator Zombieman
+        Array<CaesarSaladSpawnEnemyEntry> spawns_libLad;
+        spawns_libLad.push(addEnemyEntry('ChaingunGuy', liberatorzombieman_chaingunguy_spawn_bias));
+        addEnemy('HDZombieShockTrooperSpawn', spawns_libLad, liberatorzombieman_persistent_spawning);
     }
 
     // Random stuff, stores it and forces negative values just to be 0.
