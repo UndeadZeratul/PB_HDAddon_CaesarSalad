@@ -1,9 +1,10 @@
 // HD's main ZScript lump.
 
 version "4.11"
+
 #include "ZScript/MACZombie.zsc"
 #include "ZScript/ColtZombie.zsc"
-#include "ZScript/ACRZombie_Old.zsc"
+#include "ZScript/ACRZombie.zsc"
 #include "ZScript/Bulldozer.zsc"
 
 // #include "ZScript/Weapons/M4Flechette.zsc"
