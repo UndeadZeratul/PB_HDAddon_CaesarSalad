@@ -251,10 +251,10 @@ class PB_UndeadHomeslice:HDHumanoid{
 		#### K 3 canraise{if(abs(vel.z)<2.)frame++;}
 		#### L 5 canraise{if(abs(vel.z)>=2.)setstatelabel("dead");}
 		wait;
-	xxxdeath:
+	deadgib:
 		#### M 5;
 		#### N 5{
-			spawn("MegaBloodSplatter",pos+(0,0,34),ALLOW_REPLACE);
+			A_GibSplatter();
 			A_XScream();
 		}
 		#### OPQRST 5;
@@ -262,11 +262,11 @@ class PB_UndeadHomeslice:HDHumanoid{
 	gib:
 		#### M 5;
 		#### N 3{
-			spawn("MegaBloodSplatter",pos+(0,0,34),ALLOW_REPLACE);
+			A_GibSplatter();
 			A_XScream();
 		}
 		#### O 0 A_NoBlocking();
-		#### OP 3 spawn("MegaBloodSplatter",pos+(0,0,34),ALLOW_REPLACE);
+		#### OP 3 A_GibSplatter();
 		#### QRST 3;
 		//goto gibbed;
 	gibbed:

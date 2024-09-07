@@ -545,10 +545,10 @@ class PB_ACRZombie:HDHumanoid{
 		CRZM L 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");
 		}wait;
-	xxxdeath:
+	deadgib:
 		CRZM O 3;
 		CRZM P 3{
-			A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+			A_GibSplatter();
 			A_XScream();
 		}
 		CRZM R 2;
@@ -558,26 +558,26 @@ class PB_ACRZombie:HDHumanoid{
 	gib:
 		CRZM O 5;
 		CRZM P 3{
-			A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+			A_GibSplatter();
 			A_XScream();
 		}
-		CRZM R 2 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+		CRZM R 2 A_GibSplatter();
 		CRZM Q 5;
-		CRZM Q 0 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
-		CRZM RST 5 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+		CRZM Q 0 A_GibSplatter();
+		CRZM RST 5 A_GibSplatter();
 	gibbed:
 		CRZM T 3;
 		CRZM U 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");    
 		}wait;
 	raise:
-		CRZM M 2 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
+		CRZM M 2 A_GibSplatter();
 		CRZM ML 6;
 		CRZM KJIH 4;
 		#### A 0 A_Jump(256,"see");
 	ungib:
-		CRZM T 6 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
-		CRZM TS 12 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
+		CRZM T 6 A_GibSplatter();
+		CRZM TS 12 A_GibSplatter();
 		CRZM RQ 7;
 		CRZM POH 5;
 		#### A 0 A_Jump(256,"see");

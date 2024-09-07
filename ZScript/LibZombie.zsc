@@ -347,39 +347,39 @@ class HDLiberatorZombie:HDHumanoid{
 		ZCM0 M 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");
 		}wait;
-	xxxdeath:
+	deadgib:
 		ZCM0 O 3;
 		ZCM0 P 3{
-			A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+			A_GibSplatter();
 			A_XScream();
 		}
 		ZCM0 R 2;
 		ZCM0 QRS 5;
-		---- A 0 setstatelabel("xdead");
+		---- A 0 setstatelabel("gibbed");
 
-	xdeath:
+	gib:
 		ZCM0 O 5;
 		ZCM0 P 3{
-			A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+			A_GibSplatter();
 			A_XScream();
 		}
-		ZCM0 R 2 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+		ZCM0 R 2 A_GibSplatter();
 		ZCM0 Q 5;
-		ZCM0 Q 0 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
-		ZCM0 RS 5 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
-	xdead:
+		ZCM0 Q 0 A_GibSplatter();
+		ZCM0 RS 5 A_GibSplatter();
+	gibbed:
 		ZCM0 S 3;
 		ZCM0 T 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");    
 		}wait;
 	raise:
-		ZCM0 M 2 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
+		ZCM0 M 2 A_GibSplatter();
 		ZCM0 ML 6;
 		ZCM0 KJIH 4;
 		#### A 0 A_Jump(256,"see");
 	ungib:
-		ZCM0 T 6 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
-		ZCM0 TS 12 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
+		ZCM0 T 6 A_GibSplatter();
+		ZCM0 TS 12 A_GibSplatter();
 		ZCM0 RQ 7;
 		ZCM0 POH 5;
 		#### A 0 A_Jump(256,"see");
