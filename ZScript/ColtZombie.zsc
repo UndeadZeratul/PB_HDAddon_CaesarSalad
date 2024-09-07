@@ -496,10 +496,10 @@ class PB_ColtSMGZombie:HDHumanoid{
 		CMGZ L 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");
 		}wait;
-	xxxdeath:
+	deadgib:
 		CMGZ O 3;
 		CMGZ P 3{
-			A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+			A_GibSplatter();
 			A_XScream();
 		}
 		CMGZ R 2;
@@ -509,26 +509,26 @@ class PB_ColtSMGZombie:HDHumanoid{
 	gib:
 		CMGZ MNO 3;
 		CMGZ P 3{
-			A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+			A_GibSplatter();
 			A_XScream();
 		}
-		CMGZ R 3 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+		CMGZ R 3 A_GibSplatter();
 		CMGZ Q 3;
-		CMGZ Q 0 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
-		CMGZ RST 3 A_SpawnItemEx("MegaBloodSplatter",0,0,34,0,0,0,0,160);
+		CMGZ Q 0 A_GibSplatter();
+		CMGZ RST 3 A_GibSplatter();
 	gibbed:
 		CMGZ T 3;
 		CMGZ U 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");    
 		}wait;
 	raise:
-		CMGZ M 2 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
+		CMGZ M 2 A_GibSplatter();
 		CMGZ ML 6;
 		CMGZ KJIH 4;
 		#### A 0 A_Jump(256,"see");
 	ungib:
-		CMGZ T 6 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
-		CMGZ TS 12 A_SpawnItemEx("MegaBloodSplatter",0,0,4,0,0,3,0,SXF_NOCHECKPOSITION);
+		CMGZ T 6 A_GibSplatter();
+		CMGZ TS 12 A_GibSplatter();
 		CMGZ RQ 7;
 		CMGZ POH 5;
 		#### A 0 A_Jump(256,"see");
