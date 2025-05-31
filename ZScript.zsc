@@ -10,5 +10,3 @@ version "4.11"
 
 // #include "ZScript/Weapons/M4Flechette.zsc"
 #include "ZScript/Weapons/SpecGasGrenade.zsc"
-
-#include "ZScript/CaesarSaladSpawnHandler.zsc"
