@@ -1,0 +1,24 @@
+// .355 Colt SMG Zombieman Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "ZombieManReplaces", "name": "PB_ColtSMGZombie", "weight": "#colt355smgzombieman_zombieman_spawn_bias", "persists": "#colt355smgzombieman_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ShotgunGuyReplaces", "name": "PB_ColtSMGZombie", "weight": "#colt355smgzombieman_shotgunguy_spawn_bias", "persists": "#colt355smgzombieman_persistent_spawning" }
+
+// MAC-10 Zombieman Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "ZombieManReplaces", "name": "PB_UndeadHomeslice", "weight": "#mac10zombieman_zombieman_spawn_bias", "persists": "#mac10zombieman_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ShotgunGuyReplaces", "name": "PB_UndeadHomeslice", "weight": "#mac10zombieman_zombieman_spawn_bias", "persists": "#mac10zombieman_persistent_spawning" }
+
+// 6mm Flechette ACR Zombieman Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "ChaingunGuyReplaces", "name": "PB_ACRZombie", "weight": "#acrzombieman_chaingunguy_spawn_bias", "persists": "#acrzombieman_persistent_spawning" }
+
+// CAWS Shotgun Zombieman Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "HellKnightReplaces", "name": "PB_DozerZombie", "weight": "#cawszombieman_hellknight_spawn_bias", "persists": "#cawszombieman_persistent_spawning" }
+
+// Spec Ops Zombieman Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "SpectresReplaces", "name": "PB_SpecOpsZombie", "weight": "#specopszombieman_spectre_spawn_bias", "persists": "#specopszombieman_persistent_spawning" }
+
+// Liberator Zombien Spawn Entries
+addSpawnTableSingleEntry => { "tableName": "ShotgunGuyReplaces", "name": "HDSemiLibShockTrooper", "weight": "#liberatorzombieman_shotgunguy_spawn_bias", "persists": "#liberatorzombieman_persistent_spawning" }
+addSpawnTableSingleEntry => { "tableName": "ChaingunGuyReplaces", "name": "HDZombieShockTrooperSpawn", "weight": "#liberatorzombieman_chaingunguy_spawn_bias", "persists": "#liberatorzombieman_persistent_spawning" }
+
+// Ammo Usages
+addAmmoUser => { "ammoName": "HD6mmFlechetteAmmo", "name": "HDColtCommando_CS" }
+addAmmoUser => { "ammoName": "PB_HDSteyrACRMag", "name": "HDColtCommando_CS" }

@@ -40,10 +40,10 @@ OptionMenu 355smgZombiemanSpawns
 
     StaticText "$MENU_SPAWNOPTIONS", "Cream"
     StaticText "$MENU_355SMGZOMBIEMAN_ZOMBIEMAN_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "colt355smgzombieman_zombieman_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "colt355smgzombieman_zombieman_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar colt355smgzombieman_zombieman_spawn_bias"
     StaticText "$MENU_355SMGZOMBIEMAN_SHOTGUNGUY_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "colt355smgzombieman_shotgunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "colt355smgzombieman_shotgunguy_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar colt355smgzombieman_shotgunguy_spawn_bias"
     StaticText ""
 
@@ -67,10 +67,10 @@ OptionMenu mac10ZombiemanSpawns
 
     StaticText "$MENU_SPAWNOPTIONS", "Cream"
     StaticText "$MENU_MAC10ZOMBIEMAN_ZOMBIEMAN_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "mac10zombieman_zombieman_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "mac10zombieman_zombieman_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar mac10zombieman_zombieman_spawn_bias"
     StaticText "$MENU_MAC10ZOMBIEMAN_SHOTGUNGUY_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "mac10zombieman_shotgunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "mac10zombieman_shotgunguy_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar mac10zombieman_shotgunguy_spawn_bias"
     StaticText ""
 
@@ -94,7 +94,7 @@ OptionMenu acrZombiemanSpawns
 
     StaticText "$MENU_SPAWNOPTIONS", "Cream"
     StaticText "$MENU_ACRZOMBIEMAN_CHAINGUNGUY_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "acrzombieman_chaingunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "acrzombieman_chaingunguy_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar acrzombieman_chaingunguy_spawn_bias"
     StaticText ""
 
@@ -118,7 +118,7 @@ OptionMenu cawsZombiemanSpawns
 
     StaticText "$MENU_SPAWNOPTIONS", "Cream"
     StaticText "$MENU_CAWSZOMBIEMAN_HELLKNIGHT_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "cawszombieman_hellknight_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "cawszombieman_hellknight_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar cawszombieman_hellknight_spawn_bias"
     StaticText ""
 
@@ -142,7 +142,7 @@ OptionMenu specOpsZombiemanSpawns
 
     StaticText "$MENU_SPAWNOPTIONS", "Cream"
     StaticText "$MENU_SPECOPSZOMBIEMAN_SPECTRE_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "specopszombieman_spectre_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "specopszombieman_spectre_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar specopszombieman_spectre_spawn_bias"
     StaticText ""
 
@@ -166,10 +166,10 @@ OptionMenu liberatorZombiemanSpawns
 
     StaticText "$MENU_SPAWNOPTIONS", "Cream"
     StaticText "$MENU_LIBERATORZOMBIEMAN_SHOTGUNGUY_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "liberatorzombieman_shotgunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "liberatorzombieman_shotgunguy_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar liberatorzombieman_shotgunguy_spawn_bias"
     StaticText "$MENU_LIBERATORZOMBIEMAN_CHAINGUNGUY_SPAWNTEXT", "white"
-    ScaleSlider "$MENU_SPAWNRATE", "liberatorzombieman_chaingunguy_spawn_bias", -1, 999, 1, "$MENU_REPLACEALL", "$MENU_DISABLED"
+    Slider "$MENU_SPAWNRATE", "liberatorzombieman_chaingunguy_spawn_bias", 0.0, 100, .01, 2
     SafeCommand "$MENU_RESETOPTIONS", "resetcvar liberatorzombieman_chaingunguy_spawn_bias"
     StaticText ""
 
