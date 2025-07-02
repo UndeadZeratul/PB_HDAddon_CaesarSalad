@@ -22,3 +22,19 @@ addSpawnTableSingleEntry => { "tableName": "ChaingunGuyReplaces", "name": "HDZom
 // Ammo Usages
 addAmmoUser => { "ammoName": "HD6mmFlechetteAmmo", "name": "HDColtCommando_CS" }
 addAmmoUser => { "ammoName": "PB_HDSteyrACRMag", "name": "HDColtCommando_CS" }
+
+// Bounty Targets
+newMerchantBountyTarget => { "name": "PB_ColtSMGZombie", "value": "300" }
+newMerchantBountyTarget => { "name": "PB_SpecOpsZombie", "value": "300" }
+newMerchantBountyTarget => { "name": "PB_UndeadHomeslice", "value": "300" }
+newMerchantBountyTarget => { "name": "PB_ACRZombie", "value": "350" }
+newMerchantBountyTarget => { "name": "PB_DozerZombie", "value": "450" }
+newMerchantBountyTarget => { "name": "HDLiberatorZombie", "value": "500" }
+
+
+// UaS Flashlight Support
+addFlashlightHumanClass => { "name": "HDLiberatorZombie" }
+addFlashlightHumanClass => { "name": "PB_ACRZombie" }
+addFlashlightHumanClass => { "name": "PB_ColtSMGZombie" }
+addFlashlightHumanClass => { "name": "PB_DozerZombie" }
+addFlashlightHumanClass => { "name": "PB_UndeadHomeslice" }
