@@ -288,7 +288,7 @@ class PB_DozerZombie:HDHumanoid{
 		//fallthrough to shoot
 	shoot:
 		#### E 0 A_FaceTarget(5,75);
-		#### E 1 A_StartAim(maxspread:20,maxtics:random(0,35));
+		#### E 1 A_StartAim(maxspread:20,maxtics:random(0,2));
 	fire:
 		//#### E 2 A_LeadTarget(6);
 		#### F 1 bright light("SHOT"){
