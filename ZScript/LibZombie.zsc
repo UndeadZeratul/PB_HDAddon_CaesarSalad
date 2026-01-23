@@ -343,6 +343,7 @@ class HDLiberatorZombie:HDHumanoid{
 		ZCM0 J 5;
 		ZCM0 KL 5;
 	dead:
+	death.spawndead:
 		ZCM0 L 1;
 		ZCM0 M 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");
@@ -399,5 +400,32 @@ class HDZombieShockTrooperSpawn:RandomSpawner{
 	default{
 		dropitem "HDSemiLibShockTrooper",256,100;
 		dropitem "HDAutoLibShockTrooper",256,50;
+	}
+}
+
+class DeadLiberatorZombie : HDLiberatorZombie {
+	override void postBeginPlay() {
+		super.postBeginPlay();
+
+		A_Die("spawndead");
+	}
+}
+
+class DeadAutoLibShockTrooper : HDAutoLibShockTrooper {
+	default {
+		accuracy 1;
+	}
+}
+
+class DeadSemiLibShockTrooper : HDSemiLibShockTrooper {
+	default {
+		accuracy 2;
+	}
+}
+
+class DeadLibZombieShockTrooperSpawn : RandomSpawner {
+	default {
+		dropitem "DeadSemiLibShockTrooper", 256, 100;
+		dropitem "DeadAutoLibShockTrooper", 256, 50;
 	}
 }

@@ -248,6 +248,7 @@ class PB_UndeadHomeslice:HDHumanoid{
 		#### J 5 A_NoBlocking();
 		#### K 5;
 	dead:
+	death.spawndead:
 		#### K 3 canraise{if(abs(vel.z)<2.)frame++;}
 		#### L 5 canraise{if(abs(vel.z)>=2.)setstatelabel("dead");}
 		wait;
@@ -287,6 +288,10 @@ class PB_UndeadHomeslice:HDHumanoid{
 	}
 }
 
+class DeadHomeslice : PB_UndeadHomeslice {
+	override void postBeginPlay() {
+		super.postBeginPlay();
 
-
-
+		A_Die("spawndead");
+	}
+}

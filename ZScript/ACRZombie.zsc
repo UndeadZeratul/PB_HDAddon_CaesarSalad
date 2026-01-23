@@ -542,6 +542,7 @@ class PB_ACRZombie:HDHumanoid{
 		CRZM J 5;
 		CRZM KL 5;
 	dead:
+	death.spawndead:
 		CRZM L 1;
 		CRZM L 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");
@@ -583,4 +584,12 @@ class PB_ACRZombie:HDHumanoid{
 		CRZM POH 5;
 		#### A 0 A_Jump(256,"see");
 	}
+}
+
+class DeadACRZombie : PB_ACRZombie {
+    override void postBeginPlay() {
+        super.postBeginPlay();
+
+        A_Die("spawndead");
+    }
 }

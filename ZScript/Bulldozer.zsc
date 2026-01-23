@@ -546,6 +546,7 @@ class PB_DozerZombie:HDHumanoid{
 		BDZR J 5;
 		BDZR KLM 5;
 	dead:
+	death.spawndead:
 		BDZR M 1;
 		BDZR M 5 canraise{
 			if(abs(vel.z)>1)setstatelabel("dead");
@@ -587,4 +588,12 @@ class PB_DozerZombie:HDHumanoid{
 		BDZR N 5;
 		#### A 0 A_Jump(256,"see");
 	}
+}
+
+class DeadDozerZombie : PB_DozerZombie {
+    override void postBeginPlay() {
+        super.postBeginPlay();
+
+        A_Die("spawndead");
+    }
 }

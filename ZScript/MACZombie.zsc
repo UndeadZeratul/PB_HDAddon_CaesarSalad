@@ -249,6 +249,7 @@ class PB_UndeadHomeslice:HDHumanoid{
 		#### J 5 A_NoBlocking();
 		#### K 5;
 	dead:
+	death.spawndead:
 		#### K 3 canraise{if(abs(vel.z)<2.)frame++;}
 		#### L 5 canraise{if(abs(vel.z)>=2.)setstatelabel("dead");}
 		wait;
@@ -286,6 +287,14 @@ class PB_UndeadHomeslice:HDHumanoid{
 		#### PONM 4;
 		#### A 0 A_Jump(256,"see");
 	}
+}
+
+class DeadHomeslice : PB_UndeadHomeslice {
+    override void postBeginPlay() {
+        super.postBeginPlay();
+
+        A_Die("spawndead");
+    }
 }
 
 // ------------------------------------------------------------
@@ -711,4 +720,12 @@ class PB_SpecOpsBlur:HDActor{
 		MIBZ # 1 Bright A_FadeOut(0.01);
 		wait;
 	}
+}
+
+class DeadSpecOpsZombie : PB_SpecOpsZombie {
+    override void postBeginPlay() {
+        super.postBeginPlay();
+
+        A_Die("spawndead");
+    }
 }
